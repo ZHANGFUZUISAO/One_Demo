@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue2 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <!-- 引入vue3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- <p>
+            我是Vue2 {{ form }} {{arr}}
+        </p> -->
+        <hr>
+        <div>
+            我是Vue3 {{ form }} {{ arr }}
+        </div>
+    </div>
+    <script>
+        // vue2
+        // new Vue({
+        //     el: '#app',
+        //     data() {
+        //         return {
+        //             form: {
+        //                 name: '张三'
+        //             },
+        //             arr: [1, 2, 3]
+        //         }
+        //     },
+        //     mounted() {
+        //         this.form.age = 25
+        //         this.arr[2] = 888
+        //         console.log(this.form,this.arr);
+
+        //     }
+        // })
+
+        // vue3
+        const { createApp, reactive, ref, onMounted } = Vue
+        const app = createApp({
+            data() {
+                return {
+                    form: {
+                        name: '张三'
+                    },
+                    arr: [1, 2, 3]
+                }
+            },
+            method() {
+                form.age = 25,
+                arr.value[2] = 8888
+            },
+            setup() {
+                const form = reactive({
+                    name: '张三'
+                })
+                const arr = ref([1, 2, 3])
+
+                form.age = 30
+                arr.value[2] = 666
+
+
+                console.log(form, arr);
+
+                return {
+                    form,
+                    arr
+                }
+            }
+        })
+        app.mount('#app')
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
